@@ -1,8 +1,10 @@
 package com.ca1;
 
+import com.ca1.boundingbox.BoundingBox;
+
 import java.awt.*;
 
-//The Shape abstract class it is a pattern for all classes inherits from it.
+//The Shape abstract class it is a pattern for all classes inherits from Shape class.
 
 public abstract class Shape {
 
@@ -12,6 +14,8 @@ public abstract class Shape {
 
     private boolean isNameDisplayed;
 
+    BoundingBox boundingBox;
+
     public Shape(Color color, boolean filled, int xCenter, int yCenter) {
         this.color = color;
         this.filled = filled;
@@ -20,7 +24,10 @@ public abstract class Shape {
     }
 
     public Shape(Color color, int xCenter, int yCenter) {
-        this(new Color(162, 124, 208),false,xCenter, yCenter);
+        this.color = color;
+        this.xCenter = xCenter;
+        this.yCenter = yCenter;
+
     }
 
     public Shape(int xCenter, int yCenter){
@@ -29,10 +36,12 @@ public abstract class Shape {
     }
 
     public Shape(){
-        this(50,60);
+        this(0,0);
     }
 
     public abstract void drawShape(Graphics g);
+
+
 
     @Override
     public String toString() {

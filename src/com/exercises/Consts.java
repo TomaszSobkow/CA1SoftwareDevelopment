@@ -2,7 +2,10 @@ package com.exercises;
 
 public final class Consts {
 
-    public static final int FRAME_WIDTH = 740;
+    /**
+     * Constant values for size of the simple window
+     */
+    public static final int FRAME_WIDTH = 900;
     public static final int FRAME_HEIGHT = 480;
 
 }

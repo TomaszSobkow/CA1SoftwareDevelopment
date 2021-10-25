@@ -17,40 +17,31 @@ public class Rectangle extends Shape implements Moveable {
         this.height = height;
     }
 
-    public Rectangle(Color color, int xCenter, int yCenter, int width, int height){
-        super(color, xCenter, yCenter);
-        this.width = width;
-        this.height = height;
-    }
-
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter) {
-        super(color,filled,xCenter,yCenter);
+        super(color, filled, xCenter, yCenter);
     }
 
-    public Rectangle(int x, int y, int width, int height){
-        super(x,y);
+    public Rectangle(int width, int height){
+        super(Color.red,0,0);
         this.width = width;
         this.height = height;
-    }
-
-    public Rectangle(int xPosition, int yPosition){
-        super(xPosition,yPosition);
     }
 
     @Override
     public void drawShape(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(this.getColor());
         g.drawRect(this.getxCenter(),this.getyCenter(),this.getWidth(),this.getHeight());
 
-        String className = getClass().getSimpleName();
-        int xCentralPoint = (getxCenter() +(getWidth()/2));
-        int yCentralPoint = (getyCenter() + (getHeight()/2));
-
+        /**
+         * The name of rectangle shape is displayed here
+         */
         if(isNameDisplayed()){
+            String className = getClass().getSimpleName();
+
+            int xCentralPoint = (getxCenter() +(getWidth()/2));
+            int yCentralPoint = (getyCenter() + (getHeight()/2));
             g.drawString(className, xCentralPoint -25, yCentralPoint);
         }
-        //g.drawString("(Rotatable)",xCentralPoint -25,yCentralPoint +20);
-
     }
 
     @Override
