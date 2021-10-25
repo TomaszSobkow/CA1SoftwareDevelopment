@@ -17,8 +17,8 @@ public class Square extends Rectangle {
 
     @Override
     public void drawShape(Graphics g) {
-        /**
-         * Graphisc2D I'm using to draw this shape with ticker line
+        /*
+          Graphics2D I'm using to draw this shape with ticker line
          */
         Graphics2D  graphics2D = (Graphics2D)g;
         graphics2D.setStroke(new BasicStroke(3));
@@ -29,9 +29,9 @@ public class Square extends Rectangle {
         int xCentralPoint = (getxCenter() +(getSide()/2));
         int yCentralPoint = (getyCenter() + (getSide()/2));
 
-        /**
-         * Adding the  name of the shape to the shape already created  if parameter is true
-         * setStroke() method change size of the pen to default size for other shapes.
+        /*
+          Adding the  name of the shape to the shape already created  if parameter is true
+          setStroke() method change size of the pen to default size for other shapes.
          */
 
         if(isFilled()){
@@ -48,6 +48,7 @@ public class Square extends Rectangle {
         }
 
         if(isNameDisplayed()){
+
             graphics2D.drawString(className,xCentralPoint- 20,yCentralPoint);
             graphics2D.drawString("( MoveAble  )",xCentralPoint -30, yCentralPoint+20);
             graphics2D.setStroke(new BasicStroke(1));

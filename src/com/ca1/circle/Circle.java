@@ -20,25 +20,34 @@ public class Circle extends Shape {
      */
      @Override
     public void drawShape(Graphics g) {
+         String className = getClass().getSimpleName();
+         int xCentralPoint = ( getxCenter() +(getRadius() /2 ));
+         int yCentralPoint = ( getyCenter() + (getRadius() /2 ));
 
-         /**
-          * The oval is drawing here
+         /*
+           The oval is drawing here
           */
          g.setColor(this.getColor());
          g.drawOval(getxCenter(), getyCenter(), getRadius(), getRadius());
 
-         /**
-          * The name of circle shape is displayed here
+         if(isFilled()){
+             g.fillOval(getxCenter(), getyCenter(), getRadius(), getRadius());
+         }
+
+         /*
+           The name of circle shape is displayed here
           */
-         if(isNameDisplayed()){
-             String className = getClass().getSimpleName();
-             int xCentralPoint = ( getxCenter() +(getRadius() /2 ));
-             int yCentralPoint = ( getyCenter() + (getRadius() /2 ));
+         if(isFilled() && isNameDisplayed()){
+             g.setColor(Color.white);
              g.drawString(className,xCentralPoint,yCentralPoint);
          }
 
-         /**
-          * The title of assignment is here
+         if(isNameDisplayed()){
+             g.drawString(className,xCentralPoint,yCentralPoint);
+         }
+
+         /*
+           The title of assignment is here
           */
         g.setColor(Color.BLACK);
         g.setFont(new Font(Font.SANS_SERIF,Font.ITALIC,20));

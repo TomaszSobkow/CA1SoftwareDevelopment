@@ -14,7 +14,7 @@ public class CustomWindow extends JFrame {
         super("Tom's frame");
 
         mainPanel = new CustomPanel(shapesManager);
-        mainPanel.setBackground(new Color(105, 215, 212));
+        mainPanel.setBackground(new Color(173, 210, 209));
         add(mainPanel,BorderLayout.CENTER);
         setSize(Consts.FRAME_WIDTH, Consts.FRAME_HEIGHT);
     }

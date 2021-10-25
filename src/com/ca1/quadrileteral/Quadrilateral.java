@@ -21,8 +21,8 @@ public class Quadrilateral extends Shape implements Rotatable {
         super();
         //this.points =new Point[5];
        
-        /**
-         * This code collecting all data from the constructor to an array
+        /*
+          This code collecting all data from the constructor to an array
          */
         points[0] = p1;
         points[1] = rotationPoint;
@@ -60,8 +60,8 @@ public class Quadrilateral extends Shape implements Rotatable {
        // g.setColor(new Color(128, 128, 18));
         g.setColor(this.getColor());
 
-        /**
-         *These arrays have a parameters for drawPolygon() method
+        /*
+         These arrays have a parameters for drawPolygon() method
          */
         int[] xPosition =  new int[5];
         int[] yPosition =  new int[5];
@@ -69,36 +69,47 @@ public class Quadrilateral extends Shape implements Rotatable {
             xPosition[index] = points[index].getX();
             yPosition[index] = points[index].getY();
         }
-        /**
-         * number of sides in my Polygon
+        /*
+          number of sides in my Polygon
          */
         int numberOfSides = xPosition.length;
+        String className = getClass().getSimpleName();
+        int xCentralPoint = points[0].getX() + 20;
+        int yCentralPoint = points[2].getY() ;
 
-        /**
-         * If ShapesManager provides the method to display the names of each shape with true parameter.
+            if(isFilled()){
+                g.setColor(this.getColor());
+                graphics2D.fillPolygon(xPosition, yPosition,numberOfSides);
+            }else {
+                g.setColor(this.getColor());
+            }
+
+        /*
+          If ShapesManager provides the method to display the names of each shape with true parameter.
          */
-        if(isNameDisplayed()){
-            /**
-             * Data for proper coordinates to display the name of the class
+        if(isNameDisplayed() && isFilled()){
+            /*
+              Data for proper coordinates to display the name of the class
              */
-            String className = getClass().getSimpleName();
-            int xCentralPoint = points[0].getX() + 20;
-            int yCentralPoint = points[2].getY() ;
-
+            graphics2D.setColor(Color.white);
             graphics2D.setStroke(new BasicStroke(3));
-            graphics2D.drawPolygon(xPosition, yPosition,numberOfSides);
             graphics2D.drawString(className, xCentralPoint, yCentralPoint);
             graphics2D.setStroke(new BasicStroke(1));
         }
-        /**
-         * Draw a shape without name of the shape
+
+        if(isNameDisplayed()){
+            g.drawString(className, xCentralPoint, yCentralPoint);
+        }
+
+        /*
+          Draw a shape without name of the shape
          */
            graphics2D.setStroke(new BasicStroke(3));
            graphics2D.drawPolygon(xPosition, yPosition,numberOfSides);
            graphics2D.setStroke(new BasicStroke(1));
 
-           /**
-         * to restore the color to draw other shapes
+           /*
+          to restore the color to draw other shapes
          */
         g.setColor(Color.blue);
     }

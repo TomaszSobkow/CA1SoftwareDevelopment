@@ -1,5 +1,6 @@
 package com.exercises;
 
+import com.ca1.Shape;
 import com.ca1.ShapesManager;
 
 import javax.swing.*;
@@ -14,53 +15,54 @@ public class CustomPanel extends JPanel {
 
     public CustomPanel(ShapesManager shapesManager){
      this.shapesManager = shapesManager;
+        createMouseListener();
 
-     addMouseListener(new MouseAdapter() {
-         @Override
-         public void mousePressed(MouseEvent e) {
-             super.mousePressed(e);
-             int xMousePosition = 0;
-             int yMousePosition = 0;
-
-             boolean rightMouseClick = false;
-             boolean leftMouseClick = false;
-             boolean middleMouseClick = false;
-
-            int modifiers = e.getModifiersEx();
-
-            if((modifiers & InputEvent.BUTTON1_DOWN_MASK) == InputEvent.BUTTON1_DOWN_MASK){
-                xMousePosition = e.getX();
-                yMousePosition = e.getY();
-                leftMouseClick = true;
-
-                System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
-            }
-
-             if((modifiers & InputEvent.BUTTON2_DOWN_MASK) == InputEvent.BUTTON2_DOWN_MASK){
-                 xMousePosition = e.getX();
-                 yMousePosition = e.getY();
-                 leftMouseClick = true;
-
-                 System.out.println("Middle Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
-             }
-
-             if((modifiers & InputEvent.BUTTON3_DOWN_MASK) == InputEvent.BUTTON3_DOWN_MASK){
-                 xMousePosition = e.getX();
-                 yMousePosition = e.getY();
-                 leftMouseClick = true;
-
-                 System.out.println("Right Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" } ");
-             }
-         }
-     }); // End of addMouseListener
-    } //end of CustomPanel
-
-    public void doing(boolean clicked){
-        if (clicked){
-
-        }
     }
 
+
+
+    public void createMouseListener(){
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                int xMousePosition = 0;
+                int yMousePosition = 0;
+
+                boolean rightMouseClick = false;
+                boolean leftMouseClick = false;
+                boolean middleMouseClick = false;
+
+                int modifiers = e.getModifiersEx();
+                System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
+
+                for(Shape current: shapesManager.getShapesArray()){
+                    changeColor(current);
+                    current.setFilled(!current.isFilled());
+
+
+                }
+
+                if((modifiers & InputEvent.BUTTON1_DOWN_MASK) == InputEvent.BUTTON1_DOWN_MASK){
+                    xMousePosition = e.getX();
+                    yMousePosition = e.getY();
+
+                    repaint();
+
+                    System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
+                }
+
+
+            }
+        }); // End of addMouseListener
+    }
+
+    public void changeColor(Shape shapeToChangeColor){
+        int red = (int)(Math.random()* 256);
+        int green = (int)(Math.random()* 256);
+        int blue = (int)(Math.random()* 256);
+        shapeToChangeColor.setColor(new Color(red,green,blue));
+    }
     /**
      * This method is critically important to success all project
      * @param g
