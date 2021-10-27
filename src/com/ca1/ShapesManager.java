@@ -34,14 +34,13 @@ public class ShapesManager {
     /**
      *  add all type of shapes to the array
      */
-       public void addShape(Shape shape){
+    public void addShape(Shape shape){
         shapesArray.add(shape);
     }
 
     public ArrayList<Shape> getShapesArray() {
         return shapesArray;
     }
-
 
     public void setDisplayName(boolean b){ this.displayName = b; }
     public boolean isDisplayName() { return displayName; }

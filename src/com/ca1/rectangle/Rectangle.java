@@ -35,8 +35,6 @@ public class Rectangle extends Shape implements Moveable {
         int yCentralPoint = (getyCenter() + (getHeight()/2));
         g.setColor(this.getColor());
 
-
-
         if(isFilled()){
             g.fillRect(this.getxCenter(),this.getyCenter(),this.getWidth(),this.getHeight());
         }else {
@@ -61,9 +59,7 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     @Override
-    public void moveTenUnits() {
-
-    }
+    public void moveTenUnits() {    }
 
     @Override
     public String toString() {

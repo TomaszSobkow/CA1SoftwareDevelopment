@@ -9,7 +9,6 @@ public class CustomWindow extends JFrame {
 
     private CustomPanel mainPanel;
 
-
     public CustomWindow(ShapesManager shapesManager){
         super("Tom's frame");
 

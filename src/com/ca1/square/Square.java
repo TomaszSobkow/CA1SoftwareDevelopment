@@ -23,8 +23,6 @@ public class Square extends Rectangle {
         Graphics2D  graphics2D = (Graphics2D)g;
         graphics2D.setStroke(new BasicStroke(3));
 
-
-
         String className = getClass().getSimpleName();
         int xCentralPoint = (getxCenter() +(getSide()/2));
         int yCentralPoint = (getyCenter() + (getSide()/2));
@@ -33,7 +31,6 @@ public class Square extends Rectangle {
           Adding the  name of the shape to the shape already created  if parameter is true
           setStroke() method change size of the pen to default size for other shapes.
          */
-
         if(isFilled()){
             graphics2D.setColor(this.getColor());
             graphics2D.fillRect(this.getxCenter(), this.getyCenter(), side, side);

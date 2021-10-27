@@ -38,10 +38,7 @@ public abstract class Shape {
     public Shape(){
         this(0,0);
     }
-
     public abstract void drawShape(Graphics g);
-
-
 
     @Override
     public String toString() {

@@ -16,8 +16,6 @@ public class ShapesApp {
         ShapesManager shapesManager = new ShapesManager();
         shapesManager.setDisplayName(true);
 
-        Rectangle rectangle = new Rectangle(200, 100);
-
         /**
          * Adding Shapes to the Array
          */
@@ -28,6 +26,8 @@ public class ShapesApp {
         shapesManager.addShape(new Square(Color.cyan,false, 50,100,150 ));
         shapesManager.addShape(new Rectangle(Color.blue,true,300, 100,250, 150));
         shapesManager.addShape(new Circle(new Color(220, 170, 46), 650,100,150));
+
+        Rectangle rectangle = new Rectangle(200, 100);
         shapesManager.addShape(new Quadrilateral(rectangle));
 
         /**

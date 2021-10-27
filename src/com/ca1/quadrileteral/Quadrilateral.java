@@ -19,7 +19,6 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     public Quadrilateral(Point p1, Point rotationPoint, Point p2, Point p3, Point p4){
         super();
-        //this.points =new Point[5];
        
         /*
           This code collecting all data from the constructor to an array
@@ -49,22 +48,17 @@ public class Quadrilateral extends Shape implements Rotatable {
         points[4] = new Point(points[0].getX(),points[0].getY());
     }
 
-    public Quadrilateral(){
-        super();
-    }
-
     @Override
     public void drawShape(Graphics g) {
 
         Graphics2D graphics2D = (Graphics2D)g;
-       // g.setColor(new Color(128, 128, 18));
         g.setColor(this.getColor());
 
         /*
          These arrays have a parameters for drawPolygon() method
          */
-        int[] xPosition =  new int[5];
-        int[] yPosition =  new int[5];
+        int[] xPosition =  new int[points.length];
+        int[] yPosition =  new int[points.length];
         for(int index = 0; index < points.length; index++){
             xPosition[index] = points[index].getX();
             yPosition[index] = points[index].getY();
@@ -99,6 +93,7 @@ public class Quadrilateral extends Shape implements Rotatable {
 
         if(isNameDisplayed()){
             g.drawString(className, xCentralPoint, yCentralPoint);
+            graphics2D.setStroke(new BasicStroke(1));
         }
 
         /*

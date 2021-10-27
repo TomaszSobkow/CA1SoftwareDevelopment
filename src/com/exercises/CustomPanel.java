@@ -16,10 +16,7 @@ public class CustomPanel extends JPanel {
     public CustomPanel(ShapesManager shapesManager){
      this.shapesManager = shapesManager;
         createMouseListener();
-
     }
-
-
 
     public void createMouseListener(){
         addMouseListener(new MouseAdapter() {
@@ -39,19 +36,15 @@ public class CustomPanel extends JPanel {
                 for(Shape current: shapesManager.getShapesArray()){
                     changeColor(current);
                     current.setFilled(!current.isFilled());
-
-
                 }
 
                 if((modifiers & InputEvent.BUTTON1_DOWN_MASK) == InputEvent.BUTTON1_DOWN_MASK){
                     xMousePosition = e.getX();
                     yMousePosition = e.getY();
-
                     repaint();
 
                     System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
                 }
-
 
             }
         }); // End of addMouseListener
