@@ -1,11 +1,7 @@
 package com.ca1;
 
 import com.ca1.boundingbox.BoundingBox;
-import com.ca1.point.Point;
-
 import java.awt.*;
-
-//The Shape abstract class it is a pattern for all classes inherits from Shape class.
 
 public abstract class Shape {
 
@@ -16,7 +12,6 @@ public abstract class Shape {
     private boolean isNameDisplayed;
     private boolean isBoundingBoxDisplayed;
 
-    BoundingBox boundingBox;
 
 
     public Shape(Color color, boolean filled, int xCenter, int yCenter) {
@@ -77,6 +72,4 @@ public abstract class Shape {
     public boolean isBoundingBoxDisplayed() { return isBoundingBoxDisplayed; }
     public void setBoundingBoxDisplayed(boolean boundingBoxDisplayed) { isBoundingBoxDisplayed = boundingBoxDisplayed; }
 
-    public BoundingBox getBoundingBox() { return boundingBox; }
-    public void setBoundingBox(BoundingBox boundingBox) { this.boundingBox = boundingBox; }
 }

@@ -70,7 +70,7 @@ public class Square extends Rectangle {
 
     @Override
     public String toString() {
-        return "Square{ " +
+        return "Square { " +
                 "side = " + side +
                 " } ";
     }

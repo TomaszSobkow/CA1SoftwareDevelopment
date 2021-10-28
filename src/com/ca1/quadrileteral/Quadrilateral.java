@@ -7,7 +7,6 @@ import com.ca1.interfaces.Rotatable;
 import com.ca1.rectangle.Rectangle;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Quadrilateral extends Shape implements Rotatable {
@@ -15,7 +14,7 @@ public class Quadrilateral extends Shape implements Rotatable {
     private  Point[] points = new Point[5];
     Point pointTopLeft;
     Point pointBottomRight;
-    BoundingBox boundingBox;
+    BoundingBox rectangleBoundingBox;
 
     public Quadrilateral(Point centerPoint, Point[] points) {
         super();
@@ -57,7 +56,7 @@ public class Quadrilateral extends Shape implements Rotatable {
     public void setupBoundingBox() {
         pointTopLeft = new Point(points[4].getX(), points[0].getY());
         pointBottomRight = new Point(points[2].getX(), points[3].getY());
-        this.boundingBox = new BoundingBox(pointTopLeft, pointBottomRight);
+        this.rectangleBoundingBox = new BoundingBox(pointTopLeft, pointBottomRight);
     }
 
     @Override
@@ -133,8 +132,8 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     @Override
     public String toString() {
-        return "Quadrilateral{" +
+        return "Quadrilateral {" +
                 "points=" + Arrays.toString(points) +
-                "} " + super.toString();
+                "} \n\tBoundingBox" + rectangleBoundingBox.getTopLeft()+ rectangleBoundingBox.getBottomRight();
     }
 }

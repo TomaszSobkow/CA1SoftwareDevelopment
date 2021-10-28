@@ -4,7 +4,6 @@ import com.ca1.Shape;
 import com.ca1.boundingbox.BoundingBox;
 import com.ca1.interfaces.Moveable;
 import com.ca1.point.Point;
-import org.w3c.dom.css.Rect;
 
 import java.awt.*;
 
@@ -13,7 +12,7 @@ public class Rectangle extends Shape implements Moveable {
     private int width;
     private int height;
 
-    BoundingBox boundingBox;
+    BoundingBox rectangleBoundingBox;
 
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter, int width, int height) {
         super(color, filled, xCenter, yCenter);
@@ -34,8 +33,14 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     @Override
+    public void moveTenUnits() {
+
+    }
+
+
+    @Override
     public void setupBoundingBox() {
-        this.boundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
+        this.rectangleBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
                                            new Point(getWidth(), getHeight()));
     }
     @Override
@@ -80,16 +85,11 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     @Override
-    public void moveTenUnits() {    }
-
-
-
-    @Override
     public String toString() {
-        return "Rectangle{" +
+        return "Rectangle {" +
                 " width = " + width +
                 ", height = " + height +
-                '}';
+                '}' +" BoundingBox " + rectangleBoundingBox.getTopLeft() + rectangleBoundingBox.getBottomRight();
     }
 
     public int getWidth() { return width; }

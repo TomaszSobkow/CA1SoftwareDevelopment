@@ -57,7 +57,7 @@ public class CustomPanel extends JPanel {
         shapeToChangeColor.setColor(new Color(red,green,blue));
     }
     /**
-     * This method is critically important to success all project
+     * This method is critically important to draw any shape
      * @param g
      * It has to be Override with the same name and arguments
      */
