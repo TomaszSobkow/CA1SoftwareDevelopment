@@ -12,7 +12,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Points_To_Test: Point{" +
+        return " Points: Point{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

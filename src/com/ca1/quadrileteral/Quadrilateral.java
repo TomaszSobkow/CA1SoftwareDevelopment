@@ -1,25 +1,28 @@
 package com.ca1.quadrileteral;
 
+import com.ca1.boundingbox.BoundingBox;
 import com.ca1.point.Point;
 import com.ca1.Shape;
 import com.ca1.interfaces.Rotatable;
 import com.ca1.rectangle.Rectangle;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Quadrilateral extends Shape implements Rotatable {
 
-    private  Point[] points =new Point[5];
+    private  Point[] points = new Point[5];
+    Point pointTopLeft;
+    Point pointBottomRight;
+    BoundingBox boundingBox;
 
     public Quadrilateral(Point centerPoint, Point[] points) {
         super();
-
     }
 
     public Quadrilateral(Point p1, Point rotationPoint, Point p2, Point p3, Point p4){
         super();
-       
         /*
           This code collecting all data from the constructor to an array
          */
@@ -28,6 +31,7 @@ public class Quadrilateral extends Shape implements Rotatable {
         points[2] = p2;
         points[3] = p3;
         points[4] = p4;
+        setupBoundingBox();
     }
 
     public Quadrilateral(Rectangle rectangle){
@@ -42,16 +46,33 @@ public class Quadrilateral extends Shape implements Rotatable {
         }
 
         points[0] = new Point(xPosition, yPosition);
-        points[1] = new Point(points[0].getX()+ rectangle.getWidth(), points[0].getY());
-        points[2] = new Point(points[1].getX(),points[1].getY()+ rectangle.getHeight());
-        points[3] = new Point(points[2].getX() - rectangle.getWidth(),points[2].getY());
+        points[1] = new Point( ( points[0].getX()+ rectangle.getWidth() ), points[0].getY());
+        points[2] = new Point( points[1].getX(),( points[1].getY()+ rectangle.getHeight()) );
+        points[3] = new Point( ( points[2].getX() - rectangle.getWidth() ),points[2].getY());
         points[4] = new Point(points[0].getX(),points[0].getY());
+        setupBoundingBox();
+    }
+
+    @Override
+    public void setupBoundingBox() {
+        pointTopLeft = new Point(points[4].getX(), points[0].getY());
+        pointBottomRight = new Point(points[2].getX(), points[3].getY());
+        this.boundingBox = new BoundingBox(pointTopLeft, pointBottomRight);
     }
 
     @Override
     public void drawShape(Graphics g) {
+        if(isBoundingBoxDisplayed()){
+            Graphics2D graphics2D = (Graphics2D)g;
+            graphics2D.setColor(Color.red);
+            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
+                    0, new float[]{9}, 4));
+            graphics2D.drawRect(pointTopLeft.getX()-1,
+                                pointTopLeft.getY()-1,
+                                ( points[2].getX() - points[4].getX()), ( points[3].getY() - points[1].getY() ) );
+            graphics2D.setStroke(new BasicStroke(1));
+        }
 
-        Graphics2D graphics2D = (Graphics2D)g;
         g.setColor(this.getColor());
 
         /*
@@ -63,6 +84,7 @@ public class Quadrilateral extends Shape implements Rotatable {
             xPosition[index] = points[index].getX();
             yPosition[index] = points[index].getY();
         }
+
         /*
           number of sides in my Polygon
          */
@@ -73,7 +95,7 @@ public class Quadrilateral extends Shape implements Rotatable {
 
             if(isFilled()){
                 g.setColor(this.getColor());
-                graphics2D.fillPolygon(xPosition, yPosition,numberOfSides);
+                g.fillPolygon(xPosition, yPosition,numberOfSides);
             }else {
                 g.setColor(this.getColor());
             }
@@ -85,23 +107,18 @@ public class Quadrilateral extends Shape implements Rotatable {
             /*
               Data for proper coordinates to display the name of the class
              */
-            graphics2D.setColor(Color.white);
-            graphics2D.setStroke(new BasicStroke(3));
-            graphics2D.drawString(className, xCentralPoint, yCentralPoint);
-            graphics2D.setStroke(new BasicStroke(1));
+            g.setColor(Color.white);
+            g.drawString(className, xCentralPoint, yCentralPoint);
         }
 
         if(isNameDisplayed()){
             g.drawString(className, xCentralPoint, yCentralPoint);
-            graphics2D.setStroke(new BasicStroke(1));
         }
 
         /*
           Draw a shape without name of the shape
          */
-           graphics2D.setStroke(new BasicStroke(3));
-           graphics2D.drawPolygon(xPosition, yPosition,numberOfSides);
-           graphics2D.setStroke(new BasicStroke(1));
+           g.drawPolygon(xPosition, yPosition,numberOfSides);
 
            /*
           to restore the color to draw other shapes
@@ -111,7 +128,7 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     @Override
     public void rotateNinetyDegrees() {
-
+        System.out.println("Rotating 90 degree");
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.ca1.rectangle;
 
 import com.ca1.Shape;
+import com.ca1.boundingbox.BoundingBox;
 import com.ca1.interfaces.Moveable;
+import com.ca1.point.Point;
 import org.w3c.dom.css.Rect;
 
 import java.awt.*;
@@ -11,10 +13,13 @@ public class Rectangle extends Shape implements Moveable {
     private int width;
     private int height;
 
+    BoundingBox boundingBox;
+
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter, int width, int height) {
         super(color, filled, xCenter, yCenter);
         this.width = width;
         this.height = height;
+        setupBoundingBox();
     }
 
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter) {
@@ -25,8 +30,14 @@ public class Rectangle extends Shape implements Moveable {
         super(Color.red,0,0);
         this.width = width;
         this.height = height;
+        setupBoundingBox();
     }
 
+    @Override
+    public void setupBoundingBox() {
+        this.boundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
+                                           new Point(getWidth(), getHeight()));
+    }
     @Override
     public void drawShape(Graphics g) {
 
@@ -39,6 +50,16 @@ public class Rectangle extends Shape implements Moveable {
             g.fillRect(this.getxCenter(),this.getyCenter(),this.getWidth(),this.getHeight());
         }else {
             g.setColor(this.getColor());
+        }
+
+        if(isBoundingBoxDisplayed()){
+            Graphics2D graphics2D = (Graphics2D)g;
+            graphics2D.setColor(Color.red);
+            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
+                    0, new float[]{9}, 4));
+            graphics2D.drawRect(super.getxCenter()-1,super.getyCenter()-1,
+                    getWidth()+2, getHeight()+2);
+            graphics2D.setStroke(new BasicStroke(1));
         }
 
         /*
@@ -60,6 +81,8 @@ public class Rectangle extends Shape implements Moveable {
 
     @Override
     public void moveTenUnits() {    }
+
+
 
     @Override
     public String toString() {

@@ -2,27 +2,28 @@ package com.ca1.boundingbox;
 
 import com.ca1.point.Point;
 
+
 public class BoundingBox {
 
-    private Point bottomLeft;
-    private Point topRight;
+    private Point topLeft;
+    private Point bottomRight;
 
-    public BoundingBox(Point bottomLeft, Point topRight) {
-        this.bottomLeft = bottomLeft;
-        this.topRight = topRight;
+    public BoundingBox(Point topLeft, Point bottomRight) {
+        this.topLeft = topLeft;
+        this.bottomRight = bottomRight;
     }
 
     @Override
     public String toString() {
         return "BoundingBox{" +
-                "bottomLeft=" + bottomLeft +
-                ", topRight=" + topRight +
+                "bottomLeft=" + topLeft +
+                ", topRight=" + bottomRight +
                 '}';
     }
 
-    public Point getBottomLeft() { return bottomLeft; }
-    public void setBottomLeft(Point bottomLeft) { this.bottomLeft = bottomLeft; }
+    public Point getTopLeft() { return topLeft; }
+    public void setTopLeft(Point bottomLeft) { this.topLeft = bottomLeft; }
 
-    public Point getTopRight() { return topRight; }
-    public void setTopRight(Point topRight) { this.topRight = topRight; }
+    public Point getBottomRight() { return bottomRight; }
+    public void setBottomRight(Point topRight) { this.bottomRight = topRight; }
 }

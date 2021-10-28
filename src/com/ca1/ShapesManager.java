@@ -8,6 +8,7 @@ public class ShapesManager {
     private boolean displayName;
     private boolean displayBoundingBox;
 
+
     private ArrayList<Shape> shapesArray;
 
     public ShapesManager() {
@@ -27,6 +28,11 @@ public class ShapesManager {
             }else {
                 currentShape.drawShape(g);
                 System.out.println(currentShape);
+            }
+
+            if(isDisplayBoundingBox()){
+                currentShape.setBoundingBoxDisplayed(isDisplayBoundingBox());
+                currentShape.drawShape(g);
             }
         }
     }

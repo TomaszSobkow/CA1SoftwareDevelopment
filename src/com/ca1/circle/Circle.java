@@ -1,6 +1,8 @@
 package com.ca1.circle;
 
 import com.ca1.Shape;
+import com.ca1.boundingbox.BoundingBox;
+import com.ca1.point.Point;
 
 import java.awt.*;
 
@@ -8,10 +10,17 @@ public class Circle extends Shape {
 
     private int radius;
 
+    BoundingBox circleBoundingBox;
+
     public Circle(Color color, int xCenter, int yCenter, int radius) {
         super(color, xCenter, yCenter);
         this.radius = radius;
+        setupBoundingBox();
+    }
 
+    public void setupBoundingBox(){
+     this.circleBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()) ,
+                                              new Point(super.getxCenter()+ getRadius(), super.getyCenter()+ getRadius()));
     }
 
     /**
@@ -21,17 +30,18 @@ public class Circle extends Shape {
      @Override
     public void drawShape(Graphics g) {
          String className = getClass().getSimpleName();
-         int xCentralPoint = ( getxCenter() +(getRadius() /2 ));
-         int yCentralPoint = ( getyCenter() + (getRadius() /2 ));
+         int xCentralPoint = (super.getxCenter() +(this.getRadius() /2 ));
+         int yCentralPoint = (super.getyCenter() + (this.getRadius() /2 ));
+
 
          /*
            The oval is drawing here
           */
          g.setColor(this.getColor());
-         g.drawOval(getxCenter(), getyCenter(), getRadius(), getRadius());
+         g.drawOval(super.getxCenter(), super.getyCenter(), this.getRadius(), this.getRadius());
 
          if(isFilled()){
-             g.fillOval(getxCenter(), getyCenter(), getRadius(), getRadius());
+             g.fillOval(super.getxCenter(), super.getyCenter(), this.getRadius(), this.getRadius());
          }
 
          /*
@@ -46,19 +56,29 @@ public class Circle extends Shape {
              g.drawString(className,xCentralPoint,yCentralPoint);
          }
 
+         if(isBoundingBoxDisplayed()){
+             Graphics2D graphics2D = (Graphics2D)g;
+             graphics2D.setColor(Color.red);
+             graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
+                     0, new float[]{9}, 4));
+             graphics2D.drawRect(super.getxCenter(),super.getyCenter(),
+                     getRadius(), getRadius());
+             graphics2D.setStroke(new BasicStroke(1));
+         }
+
          /*
            The title of assignment is here
           */
-        g.setColor(Color.BLACK);
-        g.setFont(new Font(Font.SANS_SERIF,Font.ITALIC,20));
-        g.drawString("Ca1 Software Development\n Tomas Sobkow",50,50);
-    }
+         g.setColor(Color.BLACK);
+         g.drawString("Ca1 Software Development\n Tomas Sobkow",50,50);
+
+     }
 
     @Override
     public String toString() {
         return "Circle{" +
                 " radius = " + radius +
-                '}';
+                '}' + circleBoundingBox.getTopLeft()+""+circleBoundingBox.getBottomRight();
     }
 
     public int getRadius() { return radius; }

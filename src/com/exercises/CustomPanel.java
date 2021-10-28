@@ -31,7 +31,7 @@ public class CustomPanel extends JPanel {
                 boolean middleMouseClick = false;
 
                 int modifiers = e.getModifiersEx();
-                System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
+               // System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
 
                 for(Shape current: shapesManager.getShapesArray()){
                     changeColor(current);
@@ -43,7 +43,7 @@ public class CustomPanel extends JPanel {
                     yMousePosition = e.getY();
                     repaint();
 
-                    System.out.println("Left Click works on position {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
+                    System.out.println("Left Click works on position!!!!!!!!!! {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
                 }
 
             }
