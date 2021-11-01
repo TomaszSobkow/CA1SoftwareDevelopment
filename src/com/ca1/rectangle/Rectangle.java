@@ -12,7 +12,7 @@ public class Rectangle extends Shape implements Moveable {
     private int width;
     private int height;
 
-    BoundingBox rectangleBoundingBox;
+
 
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter, int width, int height) {
         super(color, filled, xCenter, yCenter);
@@ -33,14 +33,11 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     @Override
-    public void moveTenUnits() {
-
-    }
-
+    public void moveTenUnits() {    }
 
     @Override
     public void setupBoundingBox() {
-        this.rectangleBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
+        super.shapeBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
                                            new Point(getWidth(), getHeight()));
     }
     @Override
@@ -57,15 +54,7 @@ public class Rectangle extends Shape implements Moveable {
             g.setColor(this.getColor());
         }
 
-        if(isBoundingBoxDisplayed()){
-            Graphics2D graphics2D = (Graphics2D)g;
-            graphics2D.setColor(Color.red);
-            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
-                    0, new float[]{9}, 4));
-            graphics2D.drawRect(super.getxCenter()-1,super.getyCenter()-1,
-                    getWidth()+2, getHeight()+2);
-            graphics2D.setStroke(new BasicStroke(1));
-        }
+
 
         /*
           The name of rectangle shape is displayed here
@@ -82,6 +71,15 @@ public class Rectangle extends Shape implements Moveable {
 
         }
         g.drawRect(this.getxCenter(),this.getyCenter(),this.getWidth(),this.getHeight());
+        if(isBoundingBoxDisplayed()){
+            Graphics2D graphics2D = (Graphics2D)g;
+            graphics2D.setColor(Color.red);
+            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
+                    0, new float[]{9}, 4));
+            graphics2D.drawRect(super.getxCenter(),super.getyCenter(),
+                    getWidth(), getHeight());
+            graphics2D.setStroke(new BasicStroke(1));
+        }
     }
 
     @Override
@@ -89,7 +87,7 @@ public class Rectangle extends Shape implements Moveable {
         return "Rectangle {" +
                 " width = " + width +
                 ", height = " + height +
-                '}' +" BoundingBox " + rectangleBoundingBox.getTopLeft() + rectangleBoundingBox.getBottomRight();
+                '}' +" BoundingBox " + shapeBoundingBox.getTopLeft() + shapeBoundingBox.getBottomRight();
     }
 
     public int getWidth() { return width; }

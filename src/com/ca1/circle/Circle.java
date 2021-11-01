@@ -10,7 +10,6 @@ public class Circle extends Shape {
 
     private int radius;
 
-    BoundingBox circleBoundingBox;
 
     public Circle(Color color, int xCenter, int yCenter, int radius) {
         super(color, xCenter, yCenter);
@@ -19,7 +18,7 @@ public class Circle extends Shape {
     }
 
     public void setupBoundingBox(){
-     this.circleBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()) ,
+     super.shapeBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()) ,
                                               new Point(super.getxCenter()+ getRadius(), super.getyCenter()+ getRadius()));
     }
 
@@ -55,6 +54,12 @@ public class Circle extends Shape {
              g.drawString(className,xCentralPoint,yCentralPoint);
          }
 
+          /*
+           The title of assignment is here
+          */
+         g.setColor(Color.BLACK);
+         g.drawString("Ca1 Software Development\n Tomas Sobkow",50,50);
+
          /**
           * To display BoundingBox on each Shape
           */
@@ -68,18 +73,14 @@ public class Circle extends Shape {
              graphics2D.setStroke(new BasicStroke(1));
          }
 
-         /*
-           The title of assignment is here
-          */
-         g.setColor(Color.BLACK);
-         g.drawString("Ca1 Software Development\n Tomas Sobkow",50,50);
+
      }
 
     @Override
     public String toString() {
         return "Circle {" +
                 " radius = " + radius +
-                '}' +"BoundingBox "+ circleBoundingBox.getTopLeft()+""+circleBoundingBox.getBottomRight();
+                '}' +"BoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+super.shapeBoundingBox.getBottomRight();
     }
 
     public int getRadius() { return radius; }

@@ -9,10 +9,10 @@ public abstract class Shape {
     private boolean filled;
     private int xCenter, yCenter;
 
+    protected BoundingBox shapeBoundingBox;
+
     private boolean isNameDisplayed;
     private boolean isBoundingBoxDisplayed;
-
-
 
     public Shape(Color color, boolean filled, int xCenter, int yCenter) {
         this.color = color;
@@ -72,4 +72,6 @@ public abstract class Shape {
     public boolean isBoundingBoxDisplayed() { return isBoundingBoxDisplayed; }
     public void setBoundingBoxDisplayed(boolean boundingBoxDisplayed) { isBoundingBoxDisplayed = boundingBoxDisplayed; }
 
+    public BoundingBox getShapeBoundingBox() { return shapeBoundingBox; }
+    public void setShapeBoundingBox(BoundingBox shapeBoundingBox) { this.shapeBoundingBox = shapeBoundingBox; }
 }

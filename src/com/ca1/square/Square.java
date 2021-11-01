@@ -3,6 +3,7 @@ package com.ca1.square;
 import com.ca1.boundingbox.BoundingBox;
 import com.ca1.point.Point;
 import com.ca1.rectangle.Rectangle;
+import com.exercises.CustomPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,9 +12,7 @@ import java.awt.event.ActionListener;
 public class Square extends Rectangle {
 
     private int side;
-    BoundingBox boundingBox;
-
-
+    CustomPanel castomPanel ;
 
     public Square(Color color,  boolean filled, int xCenter, int yCenter, int side){
         super(color, filled, xCenter, yCenter );
@@ -23,7 +22,7 @@ public class Square extends Rectangle {
 
     @Override
     public void setupBoundingBox() {
-        this.boundingBox = new BoundingBox(new Point(super.getxCenter(), super.getyCenter()),
+        super.shapeBoundingBox = new BoundingBox(new Point(super.getxCenter(), super.getyCenter()),
                                             new Point(this.getSide(), this.getSide()));
     }
 
@@ -34,7 +33,7 @@ public class Square extends Rectangle {
         int xCentralPoint = (super.getxCenter() +(this.getSide()/2));
         int yCentralPoint = (super.getyCenter() + (this.getSide()/2));
 
-        /*
+        /**
           Adding the  name of the shape to the shape already created  if parameter is true
           setStroke() method change size of the pen to default size for other shapes.
          */
@@ -62,8 +61,8 @@ public class Square extends Rectangle {
             graphics2D.setColor(Color.red);
             graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
                     0, new float[]{9}, 4));
-            graphics2D.drawRect(super.getxCenter()-1,super.getyCenter()-1,
-                    this.getSide ()+2, this.getSide()+2);
+            graphics2D.drawRect(super.getxCenter(),super.getyCenter(),
+                    this.getSide (), this.getSide());
             graphics2D.setStroke(new BasicStroke(1));
         }
     }
@@ -72,7 +71,7 @@ public class Square extends Rectangle {
     public String toString() {
         return "Square { " +
                 "side = " + side +
-                " } ";
+                " }  BoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+ super.shapeBoundingBox.getBottomRight();
     }
 
     public int getSide() {

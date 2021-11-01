@@ -43,7 +43,7 @@ public class Quadrilateral extends Shape implements Rotatable {
             xPosition = rectangle.getxCenter();
             yPosition = rectangle.getyCenter();
         }
-
+    //
         points[0] = new Point(xPosition, yPosition);
         points[1] = new Point( ( points[0].getX()+ rectangle.getWidth() ), points[0].getY());
         points[2] = new Point( points[1].getX(),( points[1].getY()+ rectangle.getHeight()) );
@@ -61,16 +61,7 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     @Override
     public void drawShape(Graphics g) {
-        if(isBoundingBoxDisplayed()){
-            Graphics2D graphics2D = (Graphics2D)g;
-            graphics2D.setColor(Color.red);
-            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
-                    0, new float[]{9}, 4));
-            graphics2D.drawRect(pointTopLeft.getX()-1,
-                                pointTopLeft.getY()-1,
-                                ( points[2].getX() - points[4].getX()), ( points[3].getY() - points[1].getY() ) );
-            graphics2D.setStroke(new BasicStroke(1));
-        }
+
 
         g.setColor(this.getColor());
 
@@ -123,6 +114,17 @@ public class Quadrilateral extends Shape implements Rotatable {
           to restore the color to draw other shapes
          */
         g.setColor(Color.blue);
+
+        if(isBoundingBoxDisplayed()){
+            Graphics2D graphics2D = (Graphics2D)g;
+            graphics2D.setColor(Color.red);
+            graphics2D.setStroke(new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND,
+                    0, new float[]{9}, 4));
+            graphics2D.drawRect(pointTopLeft.getX(),
+                                pointTopLeft.getY(),
+                              ( points[2].getX() - points[4].getX()), ( points[3].getY() - points[1].getY() ) );
+            graphics2D.setStroke(new BasicStroke(1));
+        }
     }
 
     @Override
@@ -132,8 +134,8 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     @Override
     public String toString() {
-        return "Quadrilateral {" +
-                "points=" + Arrays.toString(points) +
+        return "Quadrilateral { " +
+                "Points=" + Arrays.toString(points) +
                 "} \n\tBoundingBox" + rectangleBoundingBox.getTopLeft()+ rectangleBoundingBox.getBottomRight();
     }
 }

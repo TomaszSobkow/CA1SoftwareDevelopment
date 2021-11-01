@@ -10,6 +10,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class CustomPanel extends JPanel {
+    int xMousePosition ;
+    int yMousePosition ;
 
     private ShapesManager shapesManager;
 
@@ -23,8 +25,7 @@ public class CustomPanel extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
-                int xMousePosition = 0;
-                int yMousePosition = 0;
+
 
                 boolean rightMouseClick = false;
                 boolean leftMouseClick = false;
@@ -45,9 +46,8 @@ public class CustomPanel extends JPanel {
 
                     System.out.println("Left Click works on position!!!!!!!!!! {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
                 }
-
             }
-        }); // End of addMouseListener
+        }); // End addMouseListener
     }
 
     public void changeColor(Shape shapeToChangeColor){
