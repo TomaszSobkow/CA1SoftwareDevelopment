@@ -1,4 +1,4 @@
-package com.exercises;
+package com.shapeapp;
 
 import com.ca1.ShapesManager;
 import com.ca1.circle.Circle;
@@ -38,5 +38,6 @@ public class ShapesApp {
         CustomWindow customWindow = new CustomWindow(shapesManager);
         customWindow.setVisible(true);
         customWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }

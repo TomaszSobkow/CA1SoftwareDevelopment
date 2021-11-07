@@ -2,7 +2,6 @@ package com.ca1.boundingbox;
 
 import com.ca1.point.Point;
 
-
 public class BoundingBox {
 
     private Point topLeft;

@@ -17,7 +17,7 @@ public class ShapesManager {
 
     public void drawShapes(Graphics g){
         for (Shape currentShape: shapesArray){
-            /*
+            /**
               This peace fo code assuming that the name of shapes should be displayed on it
               If the parameter is true for setDisplayName() each shape get his name
              */
@@ -43,7 +43,6 @@ public class ShapesManager {
     public void addShape(Shape shape){
         shapesArray.add(shape);
     }
-
     public ArrayList<Shape> getShapesArray() {
         return shapesArray;
     }

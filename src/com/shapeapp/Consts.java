@@ -1,4 +1,4 @@
-package com.exercises;
+package com.shapeapp;
 
 public final class Consts {
 

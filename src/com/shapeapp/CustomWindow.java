@@ -1,4 +1,4 @@
-package com.exercises;
+package com.shapeapp;
 
 import com.ca1.ShapesManager;
 

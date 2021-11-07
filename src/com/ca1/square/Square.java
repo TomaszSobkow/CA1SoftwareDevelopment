@@ -1,23 +1,39 @@
 package com.ca1.square;
 
+import com.ca1.Shape;
+import com.ca1.ShapesManager;
 import com.ca1.boundingbox.BoundingBox;
+import com.ca1.interfaces.Moveable;
 import com.ca1.point.Point;
 import com.ca1.rectangle.Rectangle;
-import com.exercises.CustomPanel;
+import com.shapeapp.CustomPanel;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Moveable {
 
     private int side;
-    CustomPanel castomPanel ;
+    private CustomPanel customPanel;
 
     public Square(Color color,  boolean filled, int xCenter, int yCenter, int side){
         super(color, filled, xCenter, yCenter );
         this.side = side;
         setupBoundingBox();
+
+    }
+
+    /**
+     * Moving square up to 10 pixels plus tracking the position of mouse pointer
+     */
+    @Override
+    public void moveTenUnits() {
+        int moveInPixels = 10;
+        this.setColor( super.getColor());
+        this.setFilled( super.isFilled());
+        this.setxCenter( super.getxCenter());
+        this.setyCenter( super.getyCenter());
+        this.side = getSide();
     }
 
     @Override
@@ -71,7 +87,7 @@ public class Square extends Rectangle {
     public String toString() {
         return "Square { " +
                 "side = " + side +
-                " }  BoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+ super.shapeBoundingBox.getBottomRight();
+                " }\n\t  BoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+ super.shapeBoundingBox.getBottomRight();
     }
 
     public int getSide() {

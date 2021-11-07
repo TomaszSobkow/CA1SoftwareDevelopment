@@ -32,7 +32,7 @@ public class Circle extends Shape {
          int xCentralPoint = (super.getxCenter() +(this.getRadius() /2 ));
          int yCentralPoint = (super.getyCenter() + (this.getRadius() /2 ));
 
-         /*
+         /**
            The oval is drawing here
           */
          g.setColor(this.getColor());
@@ -42,8 +42,8 @@ public class Circle extends Shape {
              g.fillOval(super.getxCenter(), super.getyCenter(), this.getRadius(), this.getRadius());
          }
 
-         /*
-           The name of circle shape is displayed here
+         /**
+           The name of circle is displayed here
           */
          if(isFilled() && isNameDisplayed()){
              g.setColor(Color.white);
@@ -54,7 +54,7 @@ public class Circle extends Shape {
              g.drawString(className,xCentralPoint,yCentralPoint);
          }
 
-          /*
+          /**
            The title of assignment is here
           */
          g.setColor(Color.BLACK);
@@ -72,15 +72,13 @@ public class Circle extends Shape {
                      getRadius(), getRadius());
              graphics2D.setStroke(new BasicStroke(1));
          }
-
-
      }
 
     @Override
     public String toString() {
         return "Circle {" +
                 " radius = " + radius +
-                '}' +"BoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+super.shapeBoundingBox.getBottomRight();
+                '}' +"\n\tBoundingBox "+ super.shapeBoundingBox.getTopLeft()+""+super.shapeBoundingBox.getBottomRight();
     }
 
     public int getRadius() { return radius; }

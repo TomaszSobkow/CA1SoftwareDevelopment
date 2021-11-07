@@ -12,18 +12,16 @@ import java.util.Arrays;
 public class Quadrilateral extends Shape implements Rotatable {
 
     private  Point[] points = new Point[5];
+    Point[] newPoints = new Point[5];
+
     Point pointTopLeft;
     Point pointBottomRight;
     BoundingBox rectangleBoundingBox;
 
-    public Quadrilateral(Point centerPoint, Point[] points) {
-        super();
-    }
-
     public Quadrilateral(Point p1, Point rotationPoint, Point p2, Point p3, Point p4){
         super();
-        /*
-          This code collecting all data from the constructor to an array
+        /**
+          This code collecting all data from the constructor to the array
          */
         points[0] = p1;
         points[1] = rotationPoint;
@@ -53,6 +51,24 @@ public class Quadrilateral extends Shape implements Rotatable {
     }
 
     @Override
+    public void rotateNinetyDegrees() {
+//        /**
+//         * Crazy calculation here !!! but it doesn't work!!!
+//         */
+//        newPoints[0] = new Point(points[0].getX(), points[0].getY());
+//        newPoints[1] = new Point(points[0].getX(), 2* (points[1].getX() - points[0].getX()));
+//        newPoints[2] = new Point((points[0].getX()+ (points[1].getX()) - points[0].getX()) /2 , newPoints[1].getY()
+//                        + (points[2].getY() - points[1].getY()));
+//        newPoints[3] = new Point( points[3].getY() - points[1].getY(), (newPoints[0].getX()+newPoints[1].getX())/2 );
+//        newPoints[4] = new Point((newPoints[0].getX() + newPoints[1].getX()) /2,points[4].getY() );
+//
+//
+//        points = newPoints;
+//        System.out.println("Rotating 90 degree");
+        }
+
+
+    @Override
     public void setupBoundingBox() {
         pointTopLeft = new Point(points[4].getX(), points[0].getY());
         pointBottomRight = new Point(points[2].getX(), points[3].getY());
@@ -62,10 +78,9 @@ public class Quadrilateral extends Shape implements Rotatable {
     @Override
     public void drawShape(Graphics g) {
 
-
         g.setColor(this.getColor());
 
-        /*
+        /**
          These arrays have a parameters for drawPolygon() method
          */
         int[] xPosition =  new int[points.length];
@@ -75,10 +90,11 @@ public class Quadrilateral extends Shape implements Rotatable {
             yPosition[index] = points[index].getY();
         }
 
-        /*
-          number of sides in my Polygon
+        /**
+          number of sides in a Polygon
          */
         int numberOfSides = xPosition.length;
+
         String className = getClass().getSimpleName();
         int xCentralPoint = points[0].getX() + 20;
         int yCentralPoint = points[2].getY() ;
@@ -90,12 +106,12 @@ public class Quadrilateral extends Shape implements Rotatable {
                 g.setColor(this.getColor());
             }
 
-        /*
+        /**
           If ShapesManager provides the method to display the names of each shape with true parameter.
          */
         if(isNameDisplayed() && isFilled()){
-            /*
-              Data for proper coordinates to display the name of the class
+            /**
+              Data for proper coordinates to display the name of the class (in the middle)
              */
             g.setColor(Color.white);
             g.drawString(className, xCentralPoint, yCentralPoint);
@@ -105,13 +121,13 @@ public class Quadrilateral extends Shape implements Rotatable {
             g.drawString(className, xCentralPoint, yCentralPoint);
         }
 
-        /*
+        /**
           Draw a shape without name of the shape
          */
            g.drawPolygon(xPosition, yPosition,numberOfSides);
 
-           /*
-          to restore the color to draw other shapes
+           /**
+          to restore the default color to draw other shapes
          */
         g.setColor(Color.blue);
 
@@ -127,10 +143,7 @@ public class Quadrilateral extends Shape implements Rotatable {
         }
     }
 
-    @Override
-    public void rotateNinetyDegrees() {
-        System.out.println("Rotating 90 degree");
-    }
+
 
     @Override
     public String toString() {

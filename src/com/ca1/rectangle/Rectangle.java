@@ -3,11 +3,12 @@ package com.ca1.rectangle;
 import com.ca1.Shape;
 import com.ca1.boundingbox.BoundingBox;
 import com.ca1.interfaces.Moveable;
+import com.ca1.interfaces.Rotatable;
 import com.ca1.point.Point;
 
 import java.awt.*;
 
-public class Rectangle extends Shape implements Moveable {
+public class Rectangle extends Shape {
 
     private int width;
     private int height;
@@ -33,9 +34,6 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     @Override
-    public void moveTenUnits() {    }
-
-    @Override
     public void setupBoundingBox() {
         super.shapeBoundingBox = new BoundingBox(new Point(super.getxCenter(),super.getyCenter()),
                                            new Point(getWidth(), getHeight()));
@@ -55,19 +53,18 @@ public class Rectangle extends Shape implements Moveable {
         }
 
 
-
-        /*
+        /**
           The name of rectangle shape is displayed here
          */
         if(isNameDisplayed() && isFilled()){
             g.setColor(Color.white);
             g.drawString(className,xCentralPoint- 20,yCentralPoint);
-            g.drawString("( Rotatable  )",xCentralPoint -30, yCentralPoint+20);
+           //g.drawString("( Rotatable  )",xCentralPoint -30, yCentralPoint+20);
         }
 
         if(isNameDisplayed()){
             g.drawString(className, xCentralPoint -20, yCentralPoint);
-            g.drawString("( Rotatable  )",xCentralPoint -30, yCentralPoint+20);
+           // g.drawString("( Rotatable  )",xCentralPoint -30, yCentralPoint+20);
 
         }
         g.drawRect(this.getxCenter(),this.getyCenter(),this.getWidth(),this.getHeight());
@@ -87,7 +84,7 @@ public class Rectangle extends Shape implements Moveable {
         return "Rectangle {" +
                 " width = " + width +
                 ", height = " + height +
-                '}' +" BoundingBox " + shapeBoundingBox.getTopLeft() + shapeBoundingBox.getBottomRight();
+                '}' +"\n\t BoundingBox " + shapeBoundingBox.getTopLeft() + shapeBoundingBox.getBottomRight();
     }
 
     public int getWidth() { return width; }
