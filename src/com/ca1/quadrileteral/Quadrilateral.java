@@ -52,19 +52,19 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     @Override
     public void rotateNinetyDegrees() {
-//        /**
-//         * Crazy calculation here !!! but it doesn't work!!!
-//         */
-//        newPoints[0] = new Point(points[0].getX(), points[0].getY());
-//        newPoints[1] = new Point(points[0].getX(), 2* (points[1].getX() - points[0].getX()));
-//        newPoints[2] = new Point((points[0].getX()+ (points[1].getX()) - points[0].getX()) /2 , newPoints[1].getY()
-//                        + (points[2].getY() - points[1].getY()));
-//        newPoints[3] = new Point( points[3].getY() - points[1].getY(), (newPoints[0].getX()+newPoints[1].getX())/2 );
-//        newPoints[4] = new Point((newPoints[0].getX() + newPoints[1].getX()) /2,points[4].getY() );
-//
-//
-//        points = newPoints;
-//        System.out.println("Rotating 90 degree");
+        /**
+         * Crazy calculation here !!! but it doesn't work!!!
+         */
+        newPoints[0] = new Point(points[0].getX(), points[0].getY());
+        newPoints[1] = new Point(points[0].getX(), 2* (points[1].getX() - points[0].getX()));
+        newPoints[2] = new Point((points[0].getX()+ (points[1].getX()) - points[0].getX()) /2 , newPoints[1].getY()
+                        + (points[2].getY() - points[1].getY()));
+        newPoints[3] = new Point( points[3].getY() - points[1].getY(), (newPoints[0].getX()+newPoints[1].getX())/2 );
+        newPoints[4] = new Point((newPoints[0].getX() + newPoints[1].getX()) /2,points[4].getY() );
+
+
+        points = newPoints;
+        System.out.println("Rotating 90 degree");
         }
 
 
