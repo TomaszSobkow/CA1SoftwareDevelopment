@@ -1,9 +1,7 @@
 package com.ca1.rectangle;
 
 import com.ca1.Shape;
-import com.ca1.boundingbox.BoundingBox;
-import com.ca1.interfaces.Moveable;
-import com.ca1.interfaces.Rotatable;
+import com.ca1.boundingbox.BoundingBox;;
 import com.ca1.point.Point;
 
 import java.awt.*;
@@ -12,8 +10,6 @@ public class Rectangle extends Shape {
 
     private int width;
     private int height;
-
-
 
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter, int width, int height) {
         super(color, filled, xCenter, yCenter);
@@ -25,7 +21,6 @@ public class Rectangle extends Shape {
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter) {
         super(color, filled, xCenter, yCenter);
     }
-
     public Rectangle(int width, int height){
         super(Color.red,0,0);
         this.width = width;
@@ -51,7 +46,6 @@ public class Rectangle extends Shape {
         }else {
             g.setColor(this.getColor());
         }
-
 
         /**
           The name of rectangle shape is displayed here

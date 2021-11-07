@@ -1,7 +1,5 @@
 package com.ca1.square;
 
-import com.ca1.Shape;
-import com.ca1.ShapesManager;
 import com.ca1.boundingbox.BoundingBox;
 import com.ca1.interfaces.Moveable;
 import com.ca1.point.Point;
@@ -9,7 +7,6 @@ import com.ca1.rectangle.Rectangle;
 import com.shapeapp.CustomPanel;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Square extends Rectangle implements Moveable {
 
@@ -20,7 +17,6 @@ public class Square extends Rectangle implements Moveable {
         super(color, filled, xCenter, yCenter );
         this.side = side;
         setupBoundingBox();
-
     }
 
     /**

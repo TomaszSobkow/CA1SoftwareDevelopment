@@ -8,7 +8,6 @@ public class ShapesManager {
     private boolean displayName;
     private boolean displayBoundingBox;
 
-
     private ArrayList<Shape> shapesArray;
 
     public ShapesManager() {

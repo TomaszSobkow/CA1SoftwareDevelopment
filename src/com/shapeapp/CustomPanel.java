@@ -10,14 +10,13 @@ import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+
 
 public class CustomPanel extends JPanel {
     int xMousePosition ;
     int yMousePosition ;
 
     private ShapesManager shapesManager;
-
 
     public CustomPanel(ShapesManager shapesManager){
      this.shapesManager = shapesManager;
@@ -58,7 +57,6 @@ public class CustomPanel extends JPanel {
                     }
                 }
                 System.err.println("Left click {x = "+xMousePosition+" } and { y = "+ yMousePosition+" }");
-
             }
         }); // End addMouseListener
     }
